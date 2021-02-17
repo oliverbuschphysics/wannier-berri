@@ -5,7 +5,7 @@ os.environ['MKL_NUM_THREADS'] = '1'
 
 ## these linesline if you want to use the git version of the code, instead of the one installed by pip
 local_code = True
-num_proc = 4
+num_proc = 8
 
 print(os.listdir())
 
@@ -41,19 +41,19 @@ system.set_symmetry(generators)
 
 grid = wberri.Grid(system, length=10) # spacing is approx 2pi/length - here grid of 52^3 and depends on unit cell size
 
-# wberri.integrate(system, grid=grid, Efermi=Efermi,
-#             smearEf=10, # 10K = 10 Kelvin to avoid strong jittering of the curve
-#             quantities=["ahc","dos","cumdos"], # calculation of AHC, DOS and cumulated DOS
-#             numproc=num_proc,
-#             adpt_num_iter=10, # number of iterations for an adaptive recursive refinement algorithm to make the calculation more precise around those points where it diverges,
-#             fftlib='fftw', #default.  alternative  option - 'numpy'
-#             fout_name='Fe',
-#             restart=False,
-#             )
+wberri.integrate(system, grid=grid, Efermi=Efermi,
+            smearEf=10, # 10K = 10 Kelvin to avoid strong jittering of the curve
+            quantities=["ahc","dos","cumdos"], # calculation of AHC, DOS and cumulated DOS
+            numproc=num_proc,
+            adpt_num_iter=10, # number of iterations for an adaptive recursive refinement algorithm to make the calculation more precise around those points where it diverges,
+            fftlib='fftw', #default.  alternative  option - 'numpy'
+            fout_name='Fe',
+            restart=False,
+            )
 
 
-wberri.tabulate(system, grid=grid, quantities=["berry"],
-             frmsf_name='Fe',
-             numproc=num_proc,
-             ibands=np.arange(4, 10),  # energies and Berry curvature of bands 4,5,6,7,8,9
-             EF0=12.6)
+# wberri.tabulate(system, grid=grid, quantities=["berry"],
+#              frmsf_name='Fe',
+#              numproc=num_proc,
+#              ibands=np.arange(4, 10),  # energies and Berry curvature of bands 4,5,6,7,8,9
+#              EF0=12.6)

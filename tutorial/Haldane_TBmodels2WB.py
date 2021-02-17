@@ -17,12 +17,12 @@ plt.close('all')
 # about TBmodels
 def HaldaneTB(delta,t1,hop2,phi):
 # define lattice vectors
-    lat=[[1.0,0.0],[0.5,np.sqrt(3.0)/2.0]]
+    lat=[[1.0, 0.0],[0.5,np.sqrt(3.0)/2.0]]
 # define coordinates of orbitals
     orb=[[1./3.,1./3.],[2./3.,2./3.]]
 
 # make two dimensional tight-binding Haldane model
-    haldane=tbm.Model(on_site=[-delta,delta],
+    haldane=tbm.Model(on_site=[-delta, delta],
                       dim=2,
                       pos=orb,
                       uc=np.array(lat))
@@ -50,7 +50,7 @@ def HaldaneTB(delta,t1,hop2,phi):
 # Define the model for a fixed set of parameters
 haldane=HaldaneTB(2,1,1/3,np.pi/10)
 # Call the interface for TBmodels to define the system class
-syst=wb.System_TBmodels(haldane,berry=True,morb=True)
+syst = wb.System_TBmodels(haldane, berry=True, morb=True)
 Efermi=np.linspace(-4,6,1000)
 # Define some symmetries
 syst.set_symmetry(['C3z'])
