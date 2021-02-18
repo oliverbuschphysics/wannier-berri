@@ -253,7 +253,7 @@ class OccDelta():
                 raise ValueError("Unknown type of fermi-sea summation : <{}>".format(k))
             assert v.shape[0]==self.E_K.shape[0], "number of kpoints should match : {} and {}".format(v.shape[0],self.E_K.shape[0])
             assert np.all( np.array(v.shape[1:len(k)+1])==self.E_K.shape[1]), "number of bands should match : {} and {}".format(
-                              v.shape[1:len(k)+1],E_K.shape[1])
+                              v.shape[1:len(k)+1], self.E_K.shape[1])
             vshape=v.shape[len(k)+1:]
             if self.shape is None:
                 self.shape = vshape

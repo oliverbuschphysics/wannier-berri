@@ -39,7 +39,7 @@ generators = [SYM.Inversion, SYM.C4z, SYM.TimeReversal*SYM.C2x]
 # B_ext along z => inversion, 4fold rotation around z and TR combined with 2fold rotation around x-axis
 system.set_symmetry(generators)
 
-grid = wberri.Grid(system, length=10) # spacing is approx 2pi/length - here grid of 52^3 and depends on unit cell size
+grid = wberri.Grid(system, length=20) # spacing is approx 2pi/length - here grid of 52^3 for length=200 and depends on unit cell size
 
 wberri.integrate(system, grid=grid, Efermi=Efermi,
             smearEf=10, # 10K = 10 Kelvin to avoid strong jittering of the curve

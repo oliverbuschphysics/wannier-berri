@@ -15,6 +15,7 @@
 #  different types of  calculations. 
 #  child classes can be defined specifically in each module
 
+import sys
 import numpy as np
 from lazy_property import LazyProperty as Lazy
 from copy import deepcopy
@@ -118,7 +119,7 @@ class EnergyResult(Result):
             shape=data.shape[-self.rank:]
             assert np.all(np.array(shape)==3)
         for i in range(self.N_energies):
-            assert (Energies[i].shape[0]==data.shape[i]) , "dimension of Energy[{}] = {} does not match do dimension of data {}".format(i,Energy[i].shape[0],data.shape[i])
+            assert (Energies[i].shape[0]==data.shape[i]) , "dimension of Energy[{}] = {} does not match do dimension of data {}".format(i,Energies[i].shape[0],data.shape[i])
         self.Energies=Energies
         self.data=data
         self.set_smoother(smoothers)
@@ -277,7 +278,7 @@ class EnergyResultAxialV(EnergyResult):
 
 class EnergyResultPolarV(EnergyResult):
     def __init__(self,Energy,data,smoother=VoidSmoother()):
-         super(EnergyResultpolarV,self).__init__(Energy,data,smoother,TRodd=False,Iodd=True,rank=1)
+         super(EnergyResultPolarV,self).__init__(Energy,data,smoother,TRodd=False,Iodd=True,rank=1)
 
 class NoComponentError(RuntimeError):
 

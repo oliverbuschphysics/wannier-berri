@@ -105,7 +105,7 @@ def main():
   for ik in range(NK):
       npw=int(record(2+ik*(NBin+1),1))
       npw12=npw//2
-      if  npw!=npw12*2 : raise RuntimeError ("odd number of coefs {0}".format(npw2))
+      if  npw!=npw12*2 : raise RuntimeError ("odd number of coefs {0}".format(npw2)) npw
       print ("k-point {0:3d} : {1:6d} plane waves".format(ik,npw))
       WF=np.zeros((npw,NBout),dtype=complex)
       for ib in range(NBout):
